@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="header"></div>
-    <div class="content">
-        <div class="controls">
-            <!-- some way to get input on size -->
-            <div class="slidecontainer">
-                <input type="range" min="10" max="50" value="20" class="slider" class="slider-range">
+    <div class="page">
+        <div class="header"></div>
+        <div class="content">
+            <div class="controls">
+                <!-- some way to get input on size -->
+                <div class="slidecontainer">
+                    <input type="range" min="10" max="50" value="20" class="slider" class="slider-range">
+                </div>
+                <div class="slider-setting"></div>
+                <!-- a reset button -->
+                <!-- color selection??? -->
             </div>
-            <div class="slider-setting"></div>
-            <!-- a reset button -->
-            <!-- color selection??? -->
+            <div class="container">
+                <div class="grid-container"></div>
+            </div>
         </div>
-        <div class="container"></div>
+        <div class="footer"></div>
     </div>
-    <div class="footer"></div>
     <script src="scripts.js"></script>
 </body>
 </html>

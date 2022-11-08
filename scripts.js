@@ -1,27 +1,29 @@
 //declare global variables
-const size = slider.value;
+const size = 5;
 
 //create document references
-const container = document.querySelector('.container');
+const container = document.querySelector('.grid-container');
 
 //loop through columns based on user input of columns and rows; nest for loops
 //VERY PSEUDO
 function makeBox() {
     let gridItem = document.createElement('div');
     gridItem.classList.add('gridItem');
+    return gridItem;
 }
 
 function makeRow() {    
-    
+    const row = document.createElement('div');
     for(let i = 0; i < size; i++){
-
+        row.append(makeBox());
     }
-    const rows = 
+    row.classList.add('row');
+    return row;
 }
 
 function makeGrid() {
     for(let i = 0; i < size; i++){
-       let row = makeRow();
+       container.append(makeRow());
     }
 }
 
@@ -42,7 +44,7 @@ function reset() {
 }
 
 //slider controls
-const slider = document.querySelector("slider-range");
+const slider = document.querySelector("slider");
 const output = document.querySelector("slider-setting");
 output.innerHTML = slider.value; // Display the default slider value
 
