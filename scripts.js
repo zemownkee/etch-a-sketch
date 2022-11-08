@@ -2,13 +2,13 @@
 const container = document.querySelector('.grid-container');
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetFill);
+let iterateOpacity = false;
 
 //reference selection from dropdown for color
 const fillOption = document.querySelector('.dropdown');
 let fillStyle = 'black';
 fillOption.addEventListener('change', (event) => {
     fillStyle = event.target.value;
-    console.log(fillStyle);
 });
 
 //slider controls
@@ -17,16 +17,24 @@ const output = document.querySelector(".slider-setting");
 output.textContent = `Grid size: ${slider.value}`; // Display the default slider value
 
 //function to style boxes based on chosen fillStyle
-function styleBox() {
+function styleBox(element) {
     if(fillStyle === 'black') {
-        return 'background-color: black; border: 1px solid black;'
+        iterateOpacity = false;
+        return 'background-color: black; border: 1px solid black;';
     } else if(fillStyle === 'random') {
+        iterateOpacity = false;
         let tempColor = getRandomColor();
-        return `background-color: #${tempColor}; border-color: #${tempColor};`;
-    } else if(fillStyle === 'gray') {
-        return 'background-color: darkgray; border: 1px solid darkgray;';
-    }
-}
+        return `background-color: #${tempColor}; border-color: #${tempColor}`;
+    } else if(fillStyle === 'gray') { 
+        iterateOpacity = true;
+        let currentStyle = getComputedStyle(element);
+        let currentRGB = currentStyle.getPropertyValue('background-color');
+        let currentRed = currentRGB.slice(4, 7);
+        let currentOpacity = parseInt(currentRed);
+        currentOpacity -= 25;
+        return 'style', `background-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity}); 
+        border-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity});`
+        }}
 
 //initialize grid
 let size = 20;
@@ -53,8 +61,8 @@ function makeBox() {
 }
 
 function addColor(element) {
-    element.setAttribute('style', styleBox());
-}
+        element.setAttribute('style', styleBox(element));
+    }
 
 function makeRow() {    
     const row = document.createElement('div');
@@ -74,12 +82,8 @@ function makeGrid() {
     gridArray.forEach((box) => box.addEventListener('mouseover', () => {
         // what do I want it to do when I hover...
         addColor(box);
-    }));
-    gridArray.forEach((box) => box.addEventListener('touch', () => {
-        // what do I want it to do when I touch...
-        addColor(box);
-    }));
-
+        }
+    ))
 }
 
 //function to clear nodes

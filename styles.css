@@ -20,7 +20,7 @@ body {
 
 .header {
     color: antiquewhite;
-    padding: .5em 2em;
+    padding: .5em 1em;
     font-size: 36px;
 
 }
@@ -58,7 +58,7 @@ body {
 .gridItem {
     flex: 1 1 auto;
     border: 1px solid lightgray;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .row {
