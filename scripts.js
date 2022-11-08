@@ -1,7 +1,7 @@
 //create document references
 const container = document.querySelector('.grid-container');
 const resetButton = document.querySelector('.reset');
-
+resetButton.addEventListener('click', resetFill);
 
 //slider controls
 const slider = document.querySelector(".slider");
@@ -20,7 +20,10 @@ slider.onchange = function() {
   makeGrid();
 }
 
-resetButton.addEventListener('click', resetFill);
+function getRandomColor() {
+    let randNum = Math.floor(Math.random()*16777215);
+    return parseInt(randNum).toString(16);
+}
 
 //loop through columns based on user input of columns and rows; nest for loops
 function makeBox() {
