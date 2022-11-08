@@ -14,13 +14,19 @@
         <div class="content">
             <div class="controls">
                 <!-- get input on size -->
+                <div class="slider-setting"></div>
                 <div class="slidecontainer">
                     <input type="range" min="10" max="100" value="20" class="slider">
                 </div>
-                <div class="slider-setting"></div>
+                <!-- color selection??? -->
+                <p style="margin: 3em 0em .5em 0em;">Fill-style selection:</p>
+                <select name="fill-style" class="dropdown">
+                    <option value="black">Black</option>
+                    <option value="random">Random Color</option>
+                    <option value="gray">Gray (increasing)</option>
+                </select>
                 <!-- reset button -->
                 <button type="button" class="reset">Reset</button>
-                <!-- color selection??? -->
             </div>
             <div class="container">
                 <div class="grid-container"></div>

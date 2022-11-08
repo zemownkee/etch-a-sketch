@@ -3,10 +3,30 @@ const container = document.querySelector('.grid-container');
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetFill);
 
+//reference selection from dropdown for color
+const fillOption = document.querySelector('.dropdown');
+let fillStyle = 'black';
+fillOption.addEventListener('change', (event) => {
+    fillStyle = event.target.value;
+    console.log(fillStyle);
+});
+
 //slider controls
 const slider = document.querySelector(".slider");
 const output = document.querySelector(".slider-setting");
 output.textContent = `Grid size: ${slider.value}`; // Display the default slider value
+
+//function to style boxes based on chosen fillStyle
+function styleBox() {
+    if(fillStyle === 'black') {
+        return 'background-color: black; border: 1px solid black;'
+    } else if(fillStyle === 'random') {
+        let tempColor = getRandomColor();
+        return `background-color: #${tempColor}; border-color: #${tempColor};`;
+    } else if(fillStyle === 'gray') {
+        return 'background-color: darkgray; border: 1px solid darkgray;';
+    }
+}
 
 //initialize grid
 let size = 20;
@@ -32,6 +52,10 @@ function makeBox() {
     return gridItem;
 }
 
+function addColor(element) {
+    element.setAttribute('style', styleBox());
+}
+
 function makeRow() {    
     const row = document.createElement('div');
     for(let i = 0; i < size; i++){
@@ -49,11 +73,11 @@ function makeGrid() {
     const gridArray = [...gridItems];
     gridArray.forEach((box) => box.addEventListener('mouseover', () => {
         // what do I want it to do when I hover...
-        box.classList.add('box-on');
+        addColor(box);
     }));
     gridArray.forEach((box) => box.addEventListener('touch', () => {
         // what do I want it to do when I touch...
-        box.classList.add('box-on');
+        addColor(box);
     }));
 
 }

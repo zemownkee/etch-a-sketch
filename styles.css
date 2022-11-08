@@ -6,7 +6,7 @@ body {
     margin: 0px;
 }
 
-.header, .footer, .reset, .slider {
+.header, .footer, .reset, .slider, .dropdown {
     background-color: #465368;
 }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .reset {
-    margin-top: 4em;
+    margin-top: 2em;
     font-size: 24px;
     border: 1px solid #465368;
     border-radius: 10px;
@@ -104,4 +104,19 @@ body {
     padding: .5em 3em;
     color: antiquewhite;
     justify-self: flex-end;
+}
+
+.dropdown {
+    margin-bottom: 2em;
+    font-size: 24px;
+    border: 1px solid #465368;
+    border-radius: 10px;
+    padding: .5em 3em;
+    color: antiquewhite;
+    box-shadow: 1px 1px 2px black;
+    transition: 0.35s ;
+}
+
+.dropdown:hover {
+    scale: 1.05;
 }
