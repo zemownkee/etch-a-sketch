@@ -2,7 +2,6 @@
 const container = document.querySelector('.grid-container');
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetFill);
-let iterateOpacity = false;
 
 //reference selection from dropdown for color
 const fillOption = document.querySelector('.dropdown');
@@ -19,14 +18,11 @@ output.textContent = `Grid size: ${slider.value}`; // Display the default slider
 //function to style boxes based on chosen fillStyle
 function styleBox(element) {
     if(fillStyle === 'black') {
-        iterateOpacity = false;
         return 'background-color: black; border: 1px solid black;';
     } else if(fillStyle === 'random') {
-        iterateOpacity = false;
         let tempColor = getRandomColor();
         return `background-color: #${tempColor}; border-color: #${tempColor}`;
     } else if(fillStyle === 'gray') { 
-        iterateOpacity = true;
         let currentStyle = getComputedStyle(element);
         let currentRGB = currentStyle.getPropertyValue('background-color');
         let currentRed = currentRGB.slice(4, 7);
