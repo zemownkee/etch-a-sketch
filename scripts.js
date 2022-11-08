@@ -1,11 +1,24 @@
-//declare global variables
-const size = 5;
-
 //create document references
 const container = document.querySelector('.grid-container');
 
+//slider controls
+const slider = document.querySelector(".slider");
+const output = document.querySelector(".slider-setting");
+output.textContent = `Grid size: ${slider.value}`; // Display the default slider value
+
+//initialize grid
+let size = 20;
+makeGrid();
+// Update the current slider value (each time you drag the slider handle)
+
+slider.onchange = function() {
+  output.textContent = `Grid size: ${this.value}`;
+  size = slider.value;
+  removeAllChildNodes(container);
+  makeGrid();
+}
+
 //loop through columns based on user input of columns and rows; nest for loops
-//VERY PSEUDO
 function makeBox() {
     let gridItem = document.createElement('div');
     gridItem.classList.add('gridItem');
@@ -25,30 +38,22 @@ function makeGrid() {
     for(let i = 0; i < size; i++){
        container.append(makeRow());
     }
+    const gridItems = document.querySelectorAll('.gridItem');
+    const gridArray = [...gridItems];
+    gridArray.forEach((box) => box.addEventListener('mouseover', () => {
+        // what do I want it to do when I hover...
+        box.classList.add('box-on');
+}));}
+
+//function to clear nodes
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
-//create nodelist and array from nodelist for boxes
-const gridItems = document.querySelectorAll('.gridItem');
-const gridArray = [...gridItems];
-
-//listener on grid elements to add class on hover
-// put this in a function?
-gridArray.forEach((box) => box.addEventListener('hover', () => {
-    // what do I want it to do when I hover...
-    box.classList.add('boxOn');
-}));
-
-//function to reset page
-function reset() {
-
+function resetFill() {
+    removeAllChildNodes(container);
+    makeGrid();
 }
 
-//slider controls
-const slider = document.querySelector("slider");
-const output = document.querySelector("slider-setting");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}

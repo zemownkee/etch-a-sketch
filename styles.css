@@ -48,3 +48,7 @@
     justify-content: center;
     align-content: center;
 }
+
+ .box-on {
+    background-color: black;
+}
