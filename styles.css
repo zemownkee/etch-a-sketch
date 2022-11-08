@@ -1,13 +1,30 @@
 * {
-    border: 1px solid red;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    margin: 0px;
+}
+
+.header, .footer, .reset, .slider {
+    background-color: #465368;
 }
 
 .page {
+
     display: flex;
     flex-direction: column;
     min-width: 100vw;
     min-height: 100vh;
 }
+
+.header {
+    color: antiquewhite;
+    padding: .5em 2em;
+    font-size: 36px;
+
+}
+
 .content {
     display: flex;
     flex-direction: row;
@@ -16,8 +33,10 @@
 
 .controls {
     justify-self: flex-start;
+    margin-left: 2em;
     align-self: center;
     align-content: center;
+    flex: 1 1 0;
 }
 
 .container {
@@ -33,11 +52,12 @@
     flex-direction: column;
     height: 40vw;
     width: 40vw;
+    border: 1px solid black;
 }
 
 .gridItem {
     flex: 1 1 auto;
-    border: 1px solid black;
+    border: 1px solid lightgray;
     background-color: white;
 }
 
@@ -51,4 +71,32 @@
 
  .box-on {
     background-color: black;
+    border-color: black;
+}
+
+.reset {
+    margin-top: 4em;
+    font-size: 24px;
+    border: 1px solid #465368;
+    border-radius: 10px;
+    padding: .5em 3em;
+    color: antiquewhite;
+    box-shadow: 1px 1px 2px black;
+    transition: 0.35s ;
+}
+
+.reset:hover {
+    scale: 1.05;
+}
+
+.slider {
+    appearance: none;
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    padding: .5em 3em;
+    color: antiquewhite;
+    justify-self: flex-end;
 }

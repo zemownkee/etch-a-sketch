@@ -1,5 +1,7 @@
 //create document references
 const container = document.querySelector('.grid-container');
+const resetButton = document.querySelector('.reset');
+
 
 //slider controls
 const slider = document.querySelector(".slider");
@@ -17,6 +19,8 @@ slider.onchange = function() {
   removeAllChildNodes(container);
   makeGrid();
 }
+
+resetButton.addEventListener('click', resetFill);
 
 //loop through columns based on user input of columns and rows; nest for loops
 function makeBox() {
@@ -43,7 +47,13 @@ function makeGrid() {
     gridArray.forEach((box) => box.addEventListener('mouseover', () => {
         // what do I want it to do when I hover...
         box.classList.add('box-on');
-}));}
+    }));
+    gridArray.forEach((box) => box.addEventListener('touch', () => {
+        // what do I want it to do when I touch...
+        box.classList.add('box-on');
+    }));
+
+}
 
 //function to clear nodes
 function removeAllChildNodes(parent) {
@@ -56,4 +66,3 @@ function resetFill() {
     removeAllChildNodes(container);
     makeGrid();
 }
-
