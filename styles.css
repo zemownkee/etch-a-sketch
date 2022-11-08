@@ -1,0 +1,28 @@
+* {
+    border: 1px solid red;
+}
+
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.controls {
+    justify-self: flex-start;
+    align-self: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.gridItem {
+    flex: 1 1 0;
+    border: 1px solid black;
+    background-color: white;
+}
