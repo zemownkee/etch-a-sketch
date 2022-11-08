@@ -91,7 +91,12 @@ body {
 
 .slider {
     appearance: none;
-    width: 100%;
+    width: 90%;
+    transition: 0.35s;
+}
+
+.slider:hover {
+    scale: 1.05;
 }
 
 .footer {
