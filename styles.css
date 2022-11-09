@@ -7,7 +7,7 @@ body {
 }
 
 .header, .footer, .reset, .slider, .dropdown {
-    background-color: #465368;
+    background-color: #3776db;
 }
 
 .page {
@@ -85,7 +85,7 @@ body {
     transition: 0.35s ;
 }
 
-.reset:hover {
+.reset:hover, .slider:hover, .dropdown:hover{
     scale: 1.05;
 }
 
@@ -93,10 +93,6 @@ body {
     appearance: none;
     width: 90%;
     transition: 0.35s;
-}
-
-.slider:hover {
-    scale: 1.05;
 }
 
 .footer {
@@ -115,8 +111,4 @@ body {
     color: antiquewhite;
     box-shadow: 1px 1px 2px black;
     transition: 0.35s ;
-}
-
-.dropdown:hover {
-    scale: 1.05;
 }
