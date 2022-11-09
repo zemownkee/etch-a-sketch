@@ -1,5 +1,14 @@
 //create document references
 const container = document.querySelector('.grid-container');
+const clickZone = document.querySelector('.container');
+let isOn = false;
+clickZone.addEventListener('click', () => {
+    if(!isOn){
+        isOn = true;
+    } else if(isOn){
+        isOn = false;
+    }
+});
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', resetFill);
 
@@ -17,26 +26,28 @@ output.textContent = `Grid size: ${slider.value}`; // Display the default slider
 
 //function to style boxes based on chosen fillStyle
 function styleBox(element) {
-    if(fillStyle === 'black') {
-        return 'background-color: black; border: 1px solid black;';
-    } else if(fillStyle === 'random') {
-        let tempColor = getRandomColor();
-        return `background-color: #${tempColor}; border-color: #${tempColor}`;
-    } else if(fillStyle === 'gray') { 
-        let currentStyle = getComputedStyle(element);
-        let currentRGB = currentStyle.getPropertyValue('background-color');
-        let currentRed = currentRGB.slice(4, 7);
-        let currentOpacity = parseInt(currentRed);
-        currentOpacity -= 25;
-        return 'style', `background-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity}); 
-        border-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity});`
-        }}
+  if (isOn) {
+      if(fillStyle === 'black') {
+          return 'background-color: black; border: 1px solid black;';
+      } else if(fillStyle === 'random') {
+          let tempColor = getRandomColor();
+          return `background-color: #${tempColor}; border-color: #${tempColor}`;
+      } else if(fillStyle === 'gray') { 
+          let currentStyle = getComputedStyle(element);
+          let currentRGB = currentStyle.getPropertyValue('background-color');
+          let currentRed = currentRGB.slice(4, 7);
+          let currentOpacity = parseInt(currentRed);
+          currentOpacity -= 25;
+          return 'style', `background-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity}); 
+          border-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity});`
+          }
+  }}
 
 //initialize grid
 let size = 20;
 makeGrid();
-// Update the current slider value (each time you drag the slider handle)
 
+// Update the current slider value (each time you drag the slider handle)
 slider.onchange = function() {
   output.textContent = `Grid size: ${this.value}`;
   size = slider.value;
@@ -76,7 +87,6 @@ function makeGrid() {
     const gridItems = document.querySelectorAll('.gridItem');
     const gridArray = [...gridItems];
     gridArray.forEach((box) => box.addEventListener('mouseover', () => {
-        // what do I want it to do when I hover...
         addColor(box);
         }
     ))
