@@ -1,6 +1,8 @@
 //create document references
 const container = document.querySelector('.grid-container');
 const clickZone = document.querySelector('.container');
+
+//no draw until click the container, click the container to turn off draw
 let isOn = false;
 clickZone.addEventListener('click', () => {
     if(!isOn){
