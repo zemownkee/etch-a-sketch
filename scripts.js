@@ -29,20 +29,22 @@ output.textContent = `Grid size: ${slider.value}`; // Display the default slider
 //function to style boxes based on chosen fillStyle
 function styleBox(element) {
   if (drawEnable) {
+    let styleContent;
       if(fillStyle === 'black') {
-          return 'background-color: black; border: 1px solid black;';
+          styleContent = 'background-color: black; border: 1px solid black;';
       } else if(fillStyle === 'random') {
           let tempColor = getRandomColor();
-          return `background-color: #${tempColor}; border-color: #${tempColor}`;
+          styleContent = `background-color: #${tempColor}; border-color: #${tempColor}`;
       } else if(fillStyle === 'gray') { 
           let currentStyle = getComputedStyle(element);
           let currentRGB = currentStyle.getPropertyValue('background-color');
           let currentRed = currentRGB.slice(4, 7);
-          let currentOpacity = parseInt(currentRed);
-          currentOpacity -= 25;
-          return 'style', `background-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity}); 
-          border-color: rgb(${currentOpacity}, ${currentOpacity}, ${currentOpacity});`
+          let currentBrightness = parseInt(currentRed);
+          currentBrightness -= 25;
+          styleContent = `background-color: rgb(${currentBrightness}, ${currentBrightness}, ${currentBrightness}); 
+          border-color: rgb(${currentBrightness}, ${currentBrightness}, ${currentBrightness});`
           }
+    element.setAttribute('style', styleContent);
   }}
 
 //initialize grid
@@ -69,10 +71,6 @@ function makeBox() {
     return gridItem;
 }
 
-function addColor(element) {
-        element.setAttribute('style', styleBox(element));
-    }
-
 function makeRow() {    
     const row = document.createElement('div');
     for(let i = 0; i < size; i++){
@@ -89,7 +87,7 @@ function makeGrid() {
     const gridItems = document.querySelectorAll('.gridItem');
     const gridArray = [...gridItems];
     gridArray.forEach((box) => box.addEventListener('mouseover', () => {
-        addColor(box);
+        styleBox(box);
         }
     ))
 }
