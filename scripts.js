@@ -3,12 +3,12 @@ const container = document.querySelector('.grid-container');
 const clickZone = document.querySelector('.container');
 
 //no draw until click the container, click the container to turn off draw
-let isOn = false;
+let drawEnable = false;
 clickZone.addEventListener('click', () => {
-    if(!isOn){
-        isOn = true;
-    } else if(isOn){
-        isOn = false;
+    if(!drawEnable){
+        drawEnable = true;
+    } else if(drawEnable){
+        drawEnable = false;
     }
 });
 const resetButton = document.querySelector('.reset');
@@ -28,7 +28,7 @@ output.textContent = `Grid size: ${slider.value}`; // Display the default slider
 
 //function to style boxes based on chosen fillStyle
 function styleBox(element) {
-  if (isOn) {
+  if (drawEnable) {
       if(fillStyle === 'black') {
           return 'background-color: black; border: 1px solid black;';
       } else if(fillStyle === 'random') {
