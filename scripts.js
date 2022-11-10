@@ -102,4 +102,5 @@ function removeAllChildNodes(parent) {
 function resetFill() {
     removeAllChildNodes(container);
     makeGrid();
+    drawEnable = false;
 }
